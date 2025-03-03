@@ -1,0 +1,356 @@
+name: 'Category management'
+description: |-
+
+  APIs for managing categories in the system.
+endpoints:
+  -
+    httpMethods:
+      - GET
+    uri: api/categories
+    metadata:
+      groupName: 'Category management'
+      groupDescription: |-
+
+        APIs for managing categories in the system.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'All Categories'
+      description: 'Retrieves all category data.'
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {token}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+              "status": true,
+              "message": "All Category Data Fetched Successfully",
+              "data": [
+                  {
+                      "id": 1,
+                      "name": "Category 01",
+                      "description": "Description data..",
+                  },
+                  {
+                      "id": 2,
+                      "name": "Category 02",
+                      "description": "Description data..",
+                  }
+              ]
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer {token}'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/categories
+    metadata:
+      groupName: 'Category management'
+      groupDescription: |-
+
+        APIs for managing categories in the system.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Create Category'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {token}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: 'The name of the category.'
+        required: true
+        example: '"Technology"'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      description:
+        name: description
+        description: 'The description of the category.'
+        required: false
+        example: '"All things related to technology"'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
+    cleanBodyParameters:
+      name: '"Technology"'
+      description: '"All things related to technology"'
+    fileParameters: []
+    responses:
+      -
+        status: 201
+        content: |-
+          {
+              "status": true,
+              "message": "Category Created successfully.",
+              "data": {
+                  "id": 1,
+                  "name": "Technology",
+                  "description": "All things related to technology",
+                  "created_at": "2025-03-03T10:00:00",
+                  "updated_at": "2025-03-03T10:00:00"
+              }
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 400
+        content: |-
+          {
+              "status": false,
+              "message": "The name field is required."
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer {token}'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/categories/{id}'
+    metadata:
+      groupName: 'Category management'
+      groupDescription: |-
+
+        APIs for managing categories in the system.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Show Category'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {token}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the category.'
+        required: true
+        example: consequatur
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: consequatur
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+              "status": true,
+              "message": "Category Fetched successfully.",
+              "data": {
+                  "id": 1,
+                  "name": "Technology",
+                  "description": "All things related to technology",
+                  "created_at": "2025-03-03T10:00:00",
+                  "updated_at": "2025-03-03T10:00:00"
+              }
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer {token}'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - PUT
+      - PATCH
+    uri: 'api/categories/{id}'
+    metadata:
+      groupName: 'Category management'
+      groupDescription: |-
+
+        APIs for managing categories in the system.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Update Category'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {token}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the category.'
+        required: true
+        example: consequatur
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: consequatur
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: 'The updated name of the category.'
+        required: false
+        example: '"Science"'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      description:
+        name: description
+        description: 'The updated description of the category.'
+        required: false
+        example: '"All things related to science"'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
+    cleanBodyParameters:
+      name: '"Science"'
+      description: '"All things related to science"'
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+              "status": true,
+              "message": "Category Updated successfully.",
+              "data": {
+                  "id": 1,
+                  "name": "Science",
+                  "description": "All things related to science",
+                  "created_at": "2025-03-03T10:00:00",
+                  "updated_at": "2025-03-03T10:00:00"
+              }
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer {token}'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - DELETE
+    uri: 'api/categories/{id}'
+    metadata:
+      groupName: 'Category management'
+      groupDescription: |-
+
+        APIs for managing categories in the system.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Remove Category'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {token}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the category.'
+        required: true
+        example: consequatur
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: consequatur
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+              "status": true,
+              "message": "Category Deleted successfully."
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer {token}'
+    controller: null
+    method: null
+    route: null
+    custom: []

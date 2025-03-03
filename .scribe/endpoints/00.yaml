@@ -1,0 +1,169 @@
+name: Authentication
+description: |-
+
+  APIs for user authentication
+endpoints:
+  -
+    httpMethods:
+      - POST
+    uri: api/login
+    metadata:
+      groupName: Authentication
+      groupDescription: |-
+
+        APIs for user authentication
+      subgroup: ''
+      subgroupDescription: ''
+      title: Login
+      description: 'Authenticates a user using email and password and returns an API token.'
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      email:
+        name: email
+        description: 'The email of the user.'
+        required: true
+        example: johndoe@example.com
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      password:
+        name: password
+        description: 'The password of the user.'
+        required: true
+        example: secret123
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      email: johndoe@example.com
+      password: secret123
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "token": "your_generated_token_here"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 401
+        content: |-
+          {
+            "error": "Your Email Password Not Correct!"
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: api/user
+    metadata:
+      groupName: Authentication
+      groupDescription: |-
+
+        APIs for user authentication
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'User Details'
+      description: 'Retrieves the currently authenticated user.'
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {token}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "id": 1,
+            "name": "John Doe",
+            "email": "johndoe@example.com"
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer {token}'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/logout
+    metadata:
+      groupName: Authentication
+      groupDescription: |-
+
+        APIs for user authentication
+      subgroup: ''
+      subgroupDescription: ''
+      title: Logout
+      description: 'Logout the currently authenticated user.'
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {token}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "message": "Logged out successfully",
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer {token}'
+    controller: null
+    method: null
+    route: null
+    custom: []
