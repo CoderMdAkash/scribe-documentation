@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\User;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 /**
  * @group Authentication
@@ -34,14 +34,13 @@ class AuthController extends Controller
             'password' => 'required',
         ]);
 
-        $user = User::where('email', $request->email)->first();
+        $credentials = $request->only('email', 'password');
 
-        if ($user && password_verify($request->password, $user->password)) {
-            $token = $user->createToken('YourAppName')->plainTextToken;
-            return response()->json(['token' => $token], 200);
+        if ($token = JWTAuth::attempt($credentials)) {
+            return response()->json(['token' => $token]);
         }
 
-        return response()->json(['error' => 'Invalid Email or Password!'], 401);
+        return response()->json(['error' => 'Email or Password Invalid!'], 401);
     }
 
     /**

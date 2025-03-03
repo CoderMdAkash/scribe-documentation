@@ -41,7 +41,8 @@ return [
             'provider' => 'users',
         ],
         'api' => [
-            'driver' => 'sanctum',
+            // 'driver' => 'sanctum',
+            'driver' => 'jwt',
             'provider' => 'users',
         ],
     ],
