@@ -21,9 +21,15 @@ class CategoryRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-            'name' => 'required|max:255',
-            'description' => 'nullable'
+        $rules = [
+            'name' => 'required|max:255|unique:categories,name',
+            'description' => 'nullable',
         ];
+
+        if ($this->isMethod('patch') || $this->isMethod('put')) {
+            $rules['name'] = 'required|max:255|unique:categories,name,' . $this->route('category');
+        }
+
+        return $rules;
     }
 }

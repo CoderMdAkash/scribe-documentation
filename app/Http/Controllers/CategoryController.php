@@ -5,10 +5,11 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CategoryRequest;
 use App\Http\Resources\CategoryResource;
 use App\Models\Category;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 /**
- * @group Category management
+ * @group Category Crude
  *
  * APIs for managing categories in the system.
  */
@@ -39,15 +40,22 @@ class CategoryController extends Controller
      *     ]
      * }
      */
-    public function index()
+    public function index() :JsonResponse
     {
-        $categories = Category::all();
-
-        return response()->json([
-            'status' => true,
-            'message' => 'All categories fetched successfully.',
-            'data' => CategoryResource::collection($categories)
-        ]);
+        try {
+            $categories = Category::all();
+    
+            return response()->json([
+                'status' => true,
+                'message' => 'All categories fetched successfully.',
+                'data' => CategoryResource::collection($categories)
+            ]);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'status' => false,
+                'message' => 'Something Went Wrong!',
+            ]);
+        }
     }
 
     /**
@@ -75,17 +83,25 @@ class CategoryController extends Controller
      *     "message": "The name field is required."
      * }
      */
-    public function store(CategoryRequest $request)
+    public function store(CategoryRequest $request) :JsonResponse
     {
         $data = $request->validated();
 
-        $category = Category::create($data);
+        try {
+            $category = Category::create($data);
+    
+            return response()->json([
+                'status' => true,
+                'message' => 'Category Created successfully.',
+                'data' => new CategoryResource($category)
+            ]);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'status' => false,
+                'message' => 'Something Went Wrong!',
+            ]);
+        }
 
-        return response()->json([
-            'status' => true,
-            'message' => 'Category Created successfully.',
-            'data' => new CategoryResource($category)
-        ]);
     }
 
     /**
@@ -94,7 +110,7 @@ class CategoryController extends Controller
      * @authenticated
      * @header Authorization Bearer {token}
      *
-     * @param string $id The ID of the category.
+     * @urlParam id integer required The ID of the get.
      * 
      * @response 200 {
      *     "status": true,
@@ -107,16 +123,27 @@ class CategoryController extends Controller
      *         "updated_at": "2025-03-03T10:00:00"
      *     }
      * }
+     * @response 404 {
+     *     "status": false,
+     *     "message": "Category Not Found!",
+     * }
      */
-    public function show(string $id)
+    public function show(int $id) :JsonResponse
     {
-        $category = Category::findOrFail($id);
-
-        return response()->json([
-            'status' => true,
-            'message' => 'Category Fetched successfully.',
-            'data' => new CategoryResource($category)
-        ]);
+        try {
+            $category = Category::findOrFail($id);
+    
+            return response()->json([
+                'status' => true,
+                'message' => 'Category Fetched successfully.',
+                'data' => new CategoryResource($category)
+            ]);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'status' => false,
+                'message' => "Category Not Found!",
+            ]);
+        }
     }
 
     /**
@@ -124,6 +151,8 @@ class CategoryController extends Controller
      *
      * @authenticated
      * @header Authorization Bearer {token}
+     * 
+     * @urlParam id integer required The ID of the get.
      * 
      * @bodyParam name string The updated name of the category. Example: "Science"
      * @bodyParam description string The updated description of the category. Example: "All things related to science"
@@ -140,18 +169,26 @@ class CategoryController extends Controller
      *     }
      * }
      */
-    public function update(CategoryRequest $request, string $id)
+    public function update(CategoryRequest $request, int $id) :JsonResponse
     {
         $data = $request->validated();
 
-        $category = Category::findOrFail($id);
-        $category->update($data);
+        try {
+            $category = Category::findOrFail($id);
+            $category->update($data);
+    
+            return response()->json([
+                'status' => true,
+                'message' => 'Category Updated successfully.',
+                'data' => new CategoryResource($category)
+            ]);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'status' => false,
+                'message' => $th->getMessage(),
+            ]);
+        }
 
-        return response()->json([
-            'status' => true,
-            'message' => 'Category Updated successfully.',
-            'data' => new CategoryResource($category)
-        ]);
     }
 
     /**
@@ -160,19 +197,28 @@ class CategoryController extends Controller
      * @authenticated
      * @header Authorization Bearer {token}
      * 
+     * @urlParam id integer required The ID of the get.
+     * 
      * @response 200 {
      *     "status": true,
      *     "message": "Category Deleted successfully."
      * }
      */
-    public function destroy(string $id)
+    public function destroy(int $id) :JsonResponse
     {
-        $category = Category::findOrFail($id);
-        $category->delete();
-
-        return response()->json([
-            'status' => true,
-            'message' => 'Category Deleted successfully.',
-        ]);
+        try {
+            $category = Category::findOrFail($id);
+            $category->delete();
+    
+            return response()->json([
+                'status' => true,
+                'message' => 'Category Deleted successfully.',
+            ]);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'status' => false,
+                'message' =>  'No Data Found!',
+            ]);
+        }
     }
 }

@@ -82,38 +82,36 @@
                             </li>
                                                                         </ul>
                             </ul>
-                    <ul id="tocify-header-category-management" class="tocify-header">
-                <li class="tocify-item level-1" data-unique="category-management">
-                    <a href="#category-management">Category management</a>
+                    <ul id="tocify-header-category-crude" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="category-crude">
+                    <a href="#category-crude">Category Crude</a>
                 </li>
-                                    <ul id="tocify-subheader-category-management" class="tocify-subheader">
-                                                    <li class="tocify-item level-2" data-unique="category-management-GETapi-categories">
-                                <a href="#category-management-GETapi-categories">All Categories</a>
+                                    <ul id="tocify-subheader-category-crude" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="category-crude-GETapi-categories">
+                                <a href="#category-crude-GETapi-categories">All Categories</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="category-management-POSTapi-categories">
-                                <a href="#category-management-POSTapi-categories">Create Category</a>
+                                                                                <li class="tocify-item level-2" data-unique="category-crude-POSTapi-categories">
+                                <a href="#category-crude-POSTapi-categories">Create Category</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="category-management-GETapi-categories--id-">
-                                <a href="#category-management-GETapi-categories--id-">Show Category</a>
+                                                                                <li class="tocify-item level-2" data-unique="category-crude-GETapi-categories--id-">
+                                <a href="#category-crude-GETapi-categories--id-">Show Category</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="category-management-PUTapi-categories--id-">
-                                <a href="#category-management-PUTapi-categories--id-">Update Category</a>
+                                                                                <li class="tocify-item level-2" data-unique="category-crude-PUTapi-categories--id-">
+                                <a href="#category-crude-PUTapi-categories--id-">Update Category</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="category-management-DELETEapi-categories--id-">
-                                <a href="#category-management-DELETEapi-categories--id-">Remove Category</a>
+                                                                                <li class="tocify-item level-2" data-unique="category-crude-DELETEapi-categories--id-">
+                                <a href="#category-crude-DELETEapi-categories--id-">Remove Category</a>
                             </li>
                                                                         </ul>
                             </ul>
             </div>
 
     <ul class="toc-footer" id="toc-footer">
-                    <li style="padding-bottom: 5px;"><a href="{{ route("scribe.postman") }}">View Postman collection</a></li>
-                            <li style="padding-bottom: 5px;"><a href="{{ route("scribe.openapi") }}">View OpenAPI spec</a></li>
-                <li><a href="http://github.com/knuckleswtf/scribe">Documentation powered by Scribe ✍</a></li>
+                        <li><a href="http://github.com/knuckleswtf/scribe">Documentation powered by Scribe ✍</a></li>
     </ul>
 
     <ul class="toc-footer" id="last-updated">
-        <li>Last updated: March 3, 2025</li>
+        <li>Last updated: 2025</li>
     </ul>
 </div>
 
@@ -121,6 +119,7 @@
     <div class="dark-box"></div>
     <div class="content">
         <h1 id="introduction">Introduction</h1>
+<p>For Test Purchase</p>
 <aside>
     <strong>Base URL</strong>: <code>http://localhost:8000</code>
 </aside>
@@ -561,11 +560,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                         </form>
 
-                <h1 id="category-management">Category management</h1>
+                <h1 id="category-crude">Category Crude</h1>
 
     <p>APIs for managing categories in the system.</p>
 
-                                <h2 id="category-management-GETapi-categories">All Categories</h2>
+                                <h2 id="category-crude-GETapi-categories">All Categories</h2>
 
 <p>
 <small class="badge badge-darkred">requires authentication</small>
@@ -709,7 +708,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                         </form>
 
-                    <h2 id="category-management-POSTapi-categories">Create Category</h2>
+                    <h2 id="category-crude-POSTapi-categories">Create Category</h2>
 
 <p>
 <small class="badge badge-darkred">requires authentication</small>
@@ -892,7 +891,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
         </div>
         </form>
 
-                    <h2 id="category-management-GETapi-categories--id-">Show Category</h2>
+                    <h2 id="category-crude-GETapi-categories--id-">Show Category</h2>
 
 <p>
 <small class="badge badge-darkred">requires authentication</small>
@@ -906,7 +905,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/categories/consequatur" \
+    --get "http://localhost:8000/api/categories/17" \
     --header "Authorization: Bearer {token}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -914,7 +913,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/categories/consequatur"
+    "http://localhost:8000/api/categories/17"
 );
 
 const headers = {
@@ -946,6 +945,16 @@ fetch(url, {
         &quot;created_at&quot;: &quot;2025-03-03T10:00:00&quot;,
         &quot;updated_at&quot;: &quot;2025-03-03T10:00:00&quot;
     }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: false,
+    &quot;message&quot;: &quot;Category Not Found!&quot;,
 }</code>
  </pre>
     </span>
@@ -1032,18 +1041,18 @@ You can check the Dev Tools console for debugging information.</code></pre>
                         <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
+<small>integer</small>&nbsp;
  &nbsp;
-                <input type="text" style="display: none"
-                              name="id"                data-endpoint="GETapi-categories--id-"
-               value="consequatur"
+                <input type="number" style="display: none"
+               step="any"               name="id"                data-endpoint="GETapi-categories--id-"
+               value="17"
                data-component="url">
     <br>
-<p>The ID of the category. Example: <code>consequatur</code></p>
+<p>The ID of the get. Example: <code>17</code></p>
             </div>
                     </form>
 
-                    <h2 id="category-management-PUTapi-categories--id-">Update Category</h2>
+                    <h2 id="category-crude-PUTapi-categories--id-">Update Category</h2>
 
 <p>
 <small class="badge badge-darkred">requires authentication</small>
@@ -1057,7 +1066,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost:8000/api/categories/consequatur" \
+    "http://localhost:8000/api/categories/17" \
     --header "Authorization: Bearer {token}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
@@ -1070,7 +1079,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/categories/consequatur"
+    "http://localhost:8000/api/categories/17"
 );
 
 const headers = {
@@ -1198,14 +1207,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
                         <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
+<small>integer</small>&nbsp;
  &nbsp;
-                <input type="text" style="display: none"
-                              name="id"                data-endpoint="PUTapi-categories--id-"
-               value="consequatur"
+                <input type="number" style="display: none"
+               step="any"               name="id"                data-endpoint="PUTapi-categories--id-"
+               value="17"
                data-component="url">
     <br>
-<p>The ID of the category. Example: <code>consequatur</code></p>
+<p>The ID of the get. Example: <code>17</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -1232,7 +1241,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
         </div>
         </form>
 
-                    <h2 id="category-management-DELETEapi-categories--id-">Remove Category</h2>
+                    <h2 id="category-crude-DELETEapi-categories--id-">Remove Category</h2>
 
 <p>
 <small class="badge badge-darkred">requires authentication</small>
@@ -1246,7 +1255,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost:8000/api/categories/consequatur" \
+    "http://localhost:8000/api/categories/17" \
     --header "Authorization: Bearer {token}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -1254,7 +1263,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/categories/consequatur"
+    "http://localhost:8000/api/categories/17"
 );
 
 const headers = {
@@ -1365,14 +1374,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
                         <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
+<small>integer</small>&nbsp;
  &nbsp;
-                <input type="text" style="display: none"
-                              name="id"                data-endpoint="DELETEapi-categories--id-"
-               value="consequatur"
+                <input type="number" style="display: none"
+               step="any"               name="id"                data-endpoint="DELETEapi-categories--id-"
+               value="17"
                data-component="url">
     <br>
-<p>The ID of the category. Example: <code>consequatur</code></p>
+<p>The ID of the get. Example: <code>17</code></p>
             </div>
                     </form>
 

@@ -41,7 +41,7 @@ class AuthController extends Controller
             return response()->json(['token' => $token], 200);
         }
 
-        return response()->json(['error' => 'Your Email Password Not Correct!'], 401);
+        return response()->json(['error' => 'Invalid Email or Password!'], 401);
     }
 
     /**
@@ -60,11 +60,7 @@ class AuthController extends Controller
      */
     public function user(Request $request)
     {
-        return response()->json([
-            'id' => $request->user()->id,
-            'name' => $request->user()->name,
-            'email' => $request->user()->email,
-        ]);
+        return response()->json($request->user());
     }
     /**
      * Logout
