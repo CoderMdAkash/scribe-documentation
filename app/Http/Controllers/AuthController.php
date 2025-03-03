@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Tymon\JWTAuth\Facades\JWTAuth;
+use Illuminate\Support\Facades\Auth;
+// use Tymon\JWTAuth\Facades\JWTAuth;
 
 /**
  * @group Authentication
@@ -35,8 +36,10 @@ class AuthController extends Controller
         ]);
 
         $credentials = $request->only('email', 'password');
+        if (Auth::attempt($credentials)) {
+            $user = Auth::user();
+            $token = $user->createToken('YourAppName')->accessToken;
 
-        if ($token = JWTAuth::attempt($credentials)) {
             return response()->json(['token' => $token]);
         }
 
